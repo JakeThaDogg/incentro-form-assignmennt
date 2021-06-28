@@ -2,13 +2,16 @@ import { Field } from "formik";
 import styled from "styled-components";
 
 const StyledInput = styled(Field)`
-  width: 400px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: none;
   height: 32px;
-
+  width: 400px;
   &:focus {
     outline: none;
+  }
+
+  @media screen and (max-width: 940px) {
+    width: 100%;
   }
 `;
 
@@ -18,19 +21,21 @@ const InputLabel = styled.div`
   justify-content: space-between;
   margin-bottom: 4px;
   font-size: 14px;
+  font-weight: 500;
   line-height: 1.2;
-  color: #f4f3ec;
+  color: #e0e0ec;
 `;
 
 const Mandatory = styled.span`
-  color: #ff2222;
-  font-size: 24px;
+  color: #fe5000;
+  font-size: 26px;
 `;
 
 const ErrorText = styled.div`
-  color: #ff2222;
+  color: #cb0025;
+  text-shadow: 0 0px 1px rgba(254, 0, 47, 1);
   padding-top: 8px;
-  font-size: 0.75em;
+  font-size: 14px;
 `;
 
 const Wrapper = styled.div`
