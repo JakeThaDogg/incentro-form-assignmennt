@@ -13,28 +13,59 @@ const Form = () => {
   return (
     <Formik
       initialValues={SCHEMA.default()}
-      //validationSchema={SCHEMA}
-      onSubmit={() => console.log("coucou")}
+      validationSchema={SCHEMA}
+      onSubmit={(values) => console.log({ values })}
       enableReinitialize
     >
-      {(formikBag) => (
+      {({ errors, values }) => (
         <>
           <FormContainer>
             <div>
-              <Input name="initials" label="Initials" isRequired />
+              <Input
+                name="initials"
+                label="Initials"
+                hasErrors={errors?.initials}
+                isRequired
+              />
 
-              <Input name="lastName" label="Last Name" isRequired />
-              <Input name="postCode" label="Post Code" isRequired />
-              <Input name="street" label="Street" isRequired />
-              <Input name="city" label="City" isRequired />
+              <Input
+                name="lastName"
+                label="Last Name"
+                hasErrors={errors?.lastName}
+                isRequired
+              />
+              <Input
+                name="postCode"
+                label="Post Code"
+                hasErrors={errors?.postCode}
+                isRequired
+              />
+              <Input
+                name="street"
+                label="Street"
+                isRequired
+                hasErrors={errors?.street}
+              />
+              <Input
+                name="city"
+                label="City"
+                isRequired
+                hasErrors={errors?.city}
+              />
               <Input
                 name="houseNumber"
                 label="House Number"
                 type="number"
+                hasErrors={errors?.houseNumber}
                 isRequired
               />
-              <Input name="Email" label="email" isRequired />
-              <button>submit</button>
+              <Input
+                name="email"
+                label="Email"
+                hasErrors={errors?.email}
+                isRequired
+              />
+              <button type="submit">submit</button>
             </div>
           </FormContainer>
         </>

@@ -1,11 +1,11 @@
+import { Field } from "formik";
 import styled from "styled-components";
 
-const StyledInput = styled.input`
+const StyledInput = styled(Field)`
   width: 400px;
   border-radius: 5px;
   border: none;
   height: 32px;
-  margin-bottom: 32px;
 
   &:focus {
     outline: none;
@@ -27,15 +27,26 @@ const Mandatory = styled.span`
   font-size: 24px;
 `;
 
-const Input = ({ hasError, label, type, isRequired, ...props }) => (
-  <div>
+const ErrorText = styled.div`
+  color: #ff2222;
+  padding-top: 8px;
+  font-size: 0.75em;
+`;
+
+const Wrapper = styled.div`
+  margin: 24px 0;
+`;
+
+const Input = ({ hasErrors, label, type, isRequired, ...props }) => (
+  <Wrapper>
     {label && (
       <InputLabel>
         {label} {Boolean(isRequired) && <Mandatory>*</Mandatory>}
       </InputLabel>
     )}
     <StyledInput type={type || "text"} {...props} />
-  </div>
+    {hasErrors && <ErrorText>{hasErrors}</ErrorText>}
+  </Wrapper>
 );
 
 export default Input;
